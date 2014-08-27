@@ -53,6 +53,8 @@ modify wlan0 to wlan2
 Uboot configuration
 
 1.git clone https://github.com/Xilinx/u-boot-xlnx.git
+or you can clone https://github.com/shenerguang/u-boot-xlnx
+and skip the following changes.
 
 2.cd u-boot-xlnx/include/configs
 
@@ -76,7 +78,7 @@ cp u-boot u-boot.elf
 ******************************************************************************
 Kernel Configuration
 
-1.git clone https://github.com/Digilent/linux-digilent
+1.git clone https://github.com/shenerguang/linux-digilent
 
 2.cd linux_digilent
 
