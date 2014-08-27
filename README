@@ -27,6 +27,9 @@ http://pan.baidu.com/s/1o6AzyQY
  
 ******************************************************************************
 How to use TP-LINK WN823N
+Firstly, you should disconnect battery charger of zrobot.
+Secondly, you should connect zybo to bottom board with usb cable.
+Thirdly, connect wifi and webcam to bottom board. 
 
 1.run ifconfig -a
 and see wlan No. in my zybo, it is wlan2
