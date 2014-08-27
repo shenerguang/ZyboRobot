@@ -97,6 +97,7 @@ Kernel Configuration
 2.cd linux_digilent
 
 3.make ARCH=arm digilent_zybo_defconfig
+or you can make zybo_robot_defconfig and skip the following configurations.
 
 4.make ARCH=arm menuconfig
 4.1.System Type->
@@ -126,7 +127,7 @@ destination:tplink  wn823n(RTL8192CU) wifi support
 4.3.Device Drivers->
 	multimedia support->
 		Cameras/video grabbers support
-		Video capture adapters
+		Video capture adapters->
 			V4L USB devices->
 				usb video class(UVC)
 				GSPCA based webcams
