@@ -139,7 +139,19 @@ destination:tplink  wn823n(RTL8192CU) wifi support
 				GSPCA based webcams
 destination:configure web cam support
 
- 
+How to build OpenCV:
+====================
+
+sudo apt-get install build-essential cmake libgtk2.0-dev pkg-config python-dev python-numpy libavcodec-dev libavformat-dev libswscale-dev
+
+apt-get install libv4l-dev
+
+cd /root/opencv-2.4.9
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .
+
+make install 
+
 References:
 ===========
 
