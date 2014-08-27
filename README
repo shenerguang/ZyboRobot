@@ -73,11 +73,45 @@ cp u-boot u-boot.elf
 ******************************************************************************
 Kernel Configuration
 
-1.git clone
+1.git clone https://github.com/Digilent/linux-digilent
 
 2.cd linux_digilent
 
-3.
+3.make ARCH=arm digilent_zybo_defconfig
+
+4.make ARCH=arm menuconfig
+4.1.System Type->
+	Xilinx Specific Options->
+		[ ]Device Tree At Fixed Address
+destination:boot from second sector successfully.
+
+4.2.Networking support->
+	wireless->
+		cfg80211 and its sub items
+Device Drivers->
+	Network device support->
+		Ethernet driver support->
+			all xilinx driver choose
+		PHY Device support and infrastructure->
+			Marvell PHYS
+			VITESSE PHYS
+			REALTEK PHYS
+			Support for bitbanged MDIO buses
+		Wireless LAN->
+			IEEE802.11 for HOST AP and sub items
+			Realtek RTL8192CU/RTL8188CU USB Wireless
+destination:tplink  wn823n(RTL8192CU) wifi support
+
+4.3.Device Drivers->
+	multimedia support->
+		Cameras/video grabbers support
+		Video capture adapters
+			V4L USB devices->
+				usb video class(UVC)
+				GSPCA based webcams
+destination:configure web cam support
+
+******************************************************************************
  
 References
 1.You can download openloop FAT partition binary from:
