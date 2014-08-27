@@ -1,11 +1,15 @@
-Zybo Robot Demo
+Zybo Robot Demo(Zrobot IV)
 
-Description
+Where to get help:
+==================
+
 1.This demo is provide by digilent, you can visit following website for more information.
 http://www.digilentchina.com/productSearch.asp?key=zrobot
+http://zrobot.org/
 
-******************************************************************************
-Where to download code
+Where to get source code:
+=========================
+
 1.You can download openloop FAT partition binary from:
 
 2.You can download openloop EXT partition binary from:
@@ -25,8 +29,9 @@ Please open with Vivado 2014.2
 Register address allocation:
 http://pan.baidu.com/s/1o6AzyQY
  
-******************************************************************************
-How to use TP-LINK WN823N
+How to use TP-LINK WN823N:
+==========================
+
 Firstly, you should disconnect battery charger of zrobot.
 Secondly, you should connect zybo to bottom board with usb cable.
 Thirdly, connect wifi and webcam to bottom board. 
@@ -49,8 +54,9 @@ modify wlan0 to wlan2
 
 5.Reboot zybo or try to run /root/go_wlan.sh
 
-******************************************************************************
-Hot to use mjpeg and Java applet
+Hot to use mjpeg and Java applet:
+=================================
+
 1.cd /root/mjpeg_face_leaf_detection/mjpg-streamer
 
 2.export LD_LIBRARY_PATH=/root/mjpeg_face_leaf_detection/mjpg-streamer
@@ -63,8 +69,8 @@ Hot to use mjpeg and Java applet
 Change Security Level to Medium.
 Reopen IE and click "allow" in the prompt window.
 
-******************************************************************************
-Uboot configuration
+Uboot configuration:
+====================
 
 1.git clone https://github.com/Xilinx/u-boot-xlnx.git
 or you can clone https://github.com/shenerguang/u-boot-xlnx
@@ -89,8 +95,8 @@ make zynq_zed_config
 make
 cp u-boot u-boot.elf
 
-******************************************************************************
-Kernel Configuration
+Kernel Configuration:
+=====================
 
 1.git clone https://github.com/shenerguang/linux-digilent
 
@@ -133,8 +139,9 @@ destination:tplink  wn823n(RTL8192CU) wifi support
 				GSPCA based webcams
 destination:configure web cam support
 
-******************************************************************************
  
-References
+References:
+===========
+
 1.You can download openloop FAT partition binary from:
 
