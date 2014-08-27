@@ -50,6 +50,20 @@ modify wlan0 to wlan2
 5.Reboot zybo or try to run /root/go_wlan.sh
 
 ******************************************************************************
+Hot to use mjpeg and Java applet
+1.cd /root/mjpeg_face_leaf_detection/mjpg-streamer
+
+2.export LD_LIBRARY_PATH=/root/mjpeg_face_leaf_detection/mjpg-streamer
+
+3../mjpg_streamer -i "input_uvc.so -y -f 5 -r 640*480 -q 60" "output_http.so -p 8080 -w /var/www"
+
+4.Open IE, browse to 192.168.0.1, install the Java plug-in folling prompts.
+
+5.Open "Control Pannel"->"Programs"->"Java"->"Security"
+Change Security Level to Medium.
+Reopen IE and click "allow" in the prompt window.
+
+******************************************************************************
 Uboot configuration
 
 1.git clone https://github.com/Xilinx/u-boot-xlnx.git
