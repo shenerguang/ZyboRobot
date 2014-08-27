@@ -3,7 +3,44 @@ Zybo Robot Demo
 Description
 1.This demo is provide by digilent, you can visit following website for more information.
 http://www.digilentchina.com/productSearch.asp?key=zrobot
+
+******************************************************************************
+Where to download code
+1.You can download openloop FAT partition binary from:
+
+2.You can download openloop EXT partition binary from:
+
+3.You can download closeloop FAT partition binary from:
+
+4.You can download closeloop EXT partition binary from:
+
+5.You can download openloop Vivado project from:
+
+6.You can download closeloop Vivado project from:
  
+******************************************************************************
+How to use TP-LINK WN823N
+
+1.run ifconfig -a
+and see wlan No. in my zybo, it is wlan2
+
+2.vi /etc/udhcpd.conf
+and modify wlan0 to wlan2
+
+3.vi /etc/network/interfaces
+modify wlan0 to wlan2
+
+3.vi /etc/hostapd/hostapd.conf
+modify ssid to yourssid
+modify wlan0 to wlan2
+
+4.vi /root/go_wlan.sh
+modify wlan0 to wlan2
+
+5.Reboot zybo or try to run /root/go_wlan.sh
+
+
+******************************************************************************
 
 References
 1.You can download openloop FAT partition binary from:
