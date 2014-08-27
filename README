@@ -107,6 +107,8 @@ destination:boot from second sector successfully.
 4.2.Networking support->
 	wireless->
 		cfg80211 and its sub items
+		Common routines for IEEE802.11 drivers
+		Generic IEEE 802.11 Networking Stack (!important!)
 Device Drivers->
 	Network device support->
 		Ethernet driver support->
