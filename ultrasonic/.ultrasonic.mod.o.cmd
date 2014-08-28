@@ -1,8 +1,9 @@
-cmd_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/github/ZyboRobot/close_loop_driver/.pwmdriver.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(pwmdriver)"  -D"KBUILD_MODNAME=KBUILD_STR(pwmdriver)" -c -o /root/github/ZyboRobot/close_loop_driver/.tmp_pwmdriver.o /root/github/ZyboRobot/close_loop_driver/pwmdriver.c
+cmd_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/build/zrobot_v1-master/sw/driver/ultrasonic/.ultrasonic.mod.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(ultrasonic.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(ultrasonic)" -DMODULE  -c -o /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.c
 
-source_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := /root/github/ZyboRobot/close_loop_driver/pwmdriver.c
+source_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o := /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.c
 
-deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
+deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o := \
+    $(wildcard include/config/module/unload.h) \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
     $(wildcard include/config/modules.h) \
@@ -14,7 +15,6 @@ deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
     $(wildcard include/config/tracing.h) \
     $(wildcard include/config/event/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
-    $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/constructors.h) \
     $(wildcard include/config/debug/set/module/ronx.h) \
   include/linux/list.h \
@@ -370,84 +370,9 @@ deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
     $(wildcard include/config/modversions.h) \
   /root/zybo_gpio/linux-digilent/arch/arm/include/asm/module.h \
     $(wildcard include/config/arm/unwind.h) \
-  include/linux/fs.h \
-    $(wildcard include/config/fs/posix/acl.h) \
-    $(wildcard include/config/security.h) \
-    $(wildcard include/config/quota.h) \
-    $(wildcard include/config/fsnotify.h) \
-    $(wildcard include/config/ima.h) \
-    $(wildcard include/config/epoll.h) \
-    $(wildcard include/config/debug/writecount.h) \
-    $(wildcard include/config/file/locking.h) \
-    $(wildcard include/config/auditsyscall.h) \
-    $(wildcard include/config/block.h) \
-    $(wildcard include/config/fs/xip.h) \
-    $(wildcard include/config/migration.h) \
-  include/linux/limits.h \
-  include/linux/ioctl.h \
-  arch/arm/include/generated/asm/ioctl.h \
-  include/asm-generic/ioctl.h \
-  include/linux/blk_types.h \
-    $(wildcard include/config/blk/cgroup.h) \
-    $(wildcard include/config/blk/dev/integrity.h) \
-  include/linux/kdev_t.h \
-  include/linux/dcache.h \
-  include/linux/rculist.h \
-  include/linux/rculist_bl.h \
-  include/linux/list_bl.h \
-  include/linux/bit_spinlock.h \
-  include/linux/path.h \
-  include/linux/radix-tree.h \
-  include/linux/prio_tree.h \
-  include/linux/pid.h \
-  include/linux/capability.h \
-  include/linux/semaphore.h \
-  include/linux/fiemap.h \
-  include/linux/shrinker.h \
-  include/linux/migrate_mode.h \
-  include/linux/quota.h \
-    $(wildcard include/config/quota/netlink/interface.h) \
-  include/linux/percpu_counter.h \
-  include/linux/dqblk_xfs.h \
-  include/linux/dqblk_v1.h \
-  include/linux/dqblk_v2.h \
-  include/linux/dqblk_qtree.h \
-  include/linux/nfs_fs_i.h \
-  include/linux/fcntl.h \
-  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/fcntl.h \
-  include/asm-generic/fcntl.h \
-  include/linux/err.h \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
-  include/linux/ioport.h \
-  include/linux/klist.h \
-  include/linux/pm.h \
-    $(wildcard include/config/pm.h) \
-    $(wildcard include/config/pm/runtime.h) \
-    $(wildcard include/config/pm/clk.h) \
-    $(wildcard include/config/pm/generic/domains.h) \
-  include/linux/ratelimit.h \
-  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/device.h \
-    $(wildcard include/config/dmabounce.h) \
-    $(wildcard include/config/iommu/api.h) \
-    $(wildcard include/config/arm/dma/use/iommu.h) \
-    $(wildcard include/config/arch/omap.h) \
-  include/linux/pm_wakeup.h \
-  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/io.h \
-    $(wildcard include/config/need/mach/io/h.h) \
-    $(wildcard include/config/pcmcia/soc/common.h) \
-    $(wildcard include/config/pci.h) \
-    $(wildcard include/config/isa.h) \
-    $(wildcard include/config/pccard.h) \
-  include/asm-generic/pci_iomap.h \
-    $(wildcard include/config/no/generic/pci/ioport/map.h) \
-    $(wildcard include/config/generic/pci/iomap.h) \
-  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/uaccess.h \
-  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/unified.h \
-    $(wildcard include/config/arm/asm/unified.h) \
+  include/linux/vermagic.h \
+  include/generated/utsrelease.h \
 
-/root/github/ZyboRobot/close_loop_driver/pwmdriver.o: $(deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o)
+/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o: $(deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o)
 
-$(deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o):
+$(deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.mod.o):

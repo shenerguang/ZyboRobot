@@ -1,2 +1,2 @@
-/root/zybo_gpio/motor/pwmdriver.ko
-/root/zybo_gpio/motor/pwmdriver.o
+/root/github/ZyboRobot/close_loop_driver/pwmdriver.ko
+/root/github/ZyboRobot/close_loop_driver/pwmdriver.o

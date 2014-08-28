@@ -1,8 +1,8 @@
-cmd_/root/zybo_gpio/motor/pwmdriver.mod.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/zybo_gpio/motor/.pwmdriver.mod.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(pwmdriver.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(pwmdriver)" -DMODULE  -c -o /root/zybo_gpio/motor/pwmdriver.mod.o /root/zybo_gpio/motor/pwmdriver.mod.c
+cmd_/root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/github/ZyboRobot/close_loop_driver/.pwmdriver.mod.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(pwmdriver.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(pwmdriver)" -DMODULE  -c -o /root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o /root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.c
 
-source_/root/zybo_gpio/motor/pwmdriver.mod.o := /root/zybo_gpio/motor/pwmdriver.mod.c
+source_/root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o := /root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.c
 
-deps_/root/zybo_gpio/motor/pwmdriver.mod.o := \
+deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o := \
     $(wildcard include/config/module/unload.h) \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
@@ -373,6 +373,6 @@ deps_/root/zybo_gpio/motor/pwmdriver.mod.o := \
   include/linux/vermagic.h \
   include/generated/utsrelease.h \
 
-/root/zybo_gpio/motor/pwmdriver.mod.o: $(deps_/root/zybo_gpio/motor/pwmdriver.mod.o)
+/root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o: $(deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o)
 
-$(deps_/root/zybo_gpio/motor/pwmdriver.mod.o):
+$(deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.mod.o):

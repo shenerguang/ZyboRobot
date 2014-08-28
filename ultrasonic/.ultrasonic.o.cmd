@@ -1,8 +1,8 @@
-cmd_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/github/ZyboRobot/close_loop_driver/.pwmdriver.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(pwmdriver)"  -D"KBUILD_MODNAME=KBUILD_STR(pwmdriver)" -c -o /root/github/ZyboRobot/close_loop_driver/.tmp_pwmdriver.o /root/github/ZyboRobot/close_loop_driver/pwmdriver.c
+cmd_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/build/zrobot_v1-master/sw/driver/ultrasonic/.ultrasonic.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(ultrasonic)"  -D"KBUILD_MODNAME=KBUILD_STR(ultrasonic)" -c -o /root/build/zrobot_v1-master/sw/driver/ultrasonic/.tmp_ultrasonic.o /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.c
 
-source_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := /root/github/ZyboRobot/close_loop_driver/pwmdriver.c
+source_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.c
 
-deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
+deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
     $(wildcard include/config/modules.h) \
@@ -370,6 +370,7 @@ deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
     $(wildcard include/config/modversions.h) \
   /root/zybo_gpio/linux-digilent/arch/arm/include/asm/module.h \
     $(wildcard include/config/arm/unwind.h) \
+  include/linux/version.h \
   include/linux/fs.h \
     $(wildcard include/config/fs/posix/acl.h) \
     $(wildcard include/config/security.h) \
@@ -417,6 +418,9 @@ deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
   /root/zybo_gpio/linux-digilent/arch/arm/include/asm/fcntl.h \
   include/asm-generic/fcntl.h \
   include/linux/err.h \
+  include/linux/cdev.h \
+  include/linux/delay.h \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/delay.h \
   include/linux/device.h \
     $(wildcard include/config/debug/devres.h) \
     $(wildcard include/config/devtmpfs.h) \
@@ -448,6 +452,6 @@ deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o := \
   /root/zybo_gpio/linux-digilent/arch/arm/include/asm/unified.h \
     $(wildcard include/config/arm/asm/unified.h) \
 
-/root/github/ZyboRobot/close_loop_driver/pwmdriver.o: $(deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o)
+/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o: $(deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o)
 
-$(deps_/root/github/ZyboRobot/close_loop_driver/pwmdriver.o):
+$(deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o):
