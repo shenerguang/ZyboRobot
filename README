@@ -72,23 +72,20 @@ Reopen IE and click "allow" in the prompt window.
 Uboot configuration:
 ====================
 
-1.git clone https://github.com/Xilinx/u-boot-xlnx.git
-or you can clone https://github.com/shenerguang/u-boot-xlnx
+1.git clone https://github.com/Digilent/u-boot-Digilent-Dev
+or you can clone https://github.com/shenerguang/u-boot-Digilent-Dev
 and skip the following changes.
 
 2.cd u-boot-xlnx/include/configs
 
-3.vi zynq_zed.h
-27 #define CONFIG_ZYNQ_PS_CLK_FREQ 50000000UL
-
-4.vi zynq-common.h
-228     "sdboot=if mmcinfo; then " \
-229             "run uenvboot; " \
-230             "echo Copying Linux from SD to RAM... && " \
-231             "fatload mmc 0 0x3000000 ${kernel_image} && " \
-232             "fatload mmc 0 0x2A00000 ${devicetree_image} && " \
-233             "bootm 0x3000000 - 0x2A00000; " \
-234         "fi\0" \
+4.vi zynq_zybo.h
+ 80     "sdboot=if mmcinfo; then " \
+ 81             "run uenvboot; " \
+ 82             "echo Copying my Linux from SD to RAM... && " \
+ 83             "fatload mmc 0 0x3000000 ${kernel_image} && " \
+ 84             "fatload mmc 0 0x2A00000 ${devicetree_image} && " \
+ 85             "bootm 0x3000000 - 0x2A00000; " \
+ 86         "fi\0" \
 
 5. cd ../../
 make zynq_zed_config
@@ -171,6 +168,44 @@ passwd
 
 9.copy ubuntu to sd card.
 sudo rsync –a qemu-ubuntu/ /media/ext4
+
+How to config Wifi AP:
+======================
+1. apt-get install linux-firmware hostapd isc-dhcp-server wireless-tools 
+
+2.vi /etc/default/hostapd
+Add one line to the bottom:
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+
+3.vi /etc/hostapd/hostapd.conf
+# interface used by access point
+interface=wlan0
+# firmware driver
+driver=nl80211
+# access point SSID
+ssid=XupSmarterCar
+# operation mode (a = IEEE 802.11a, b = IEEE 802.11b, g = IEEE 802.11g)
+hw_mode=g
+# access point channel
+channel=6
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+# key management algorithm
+#wpa_key_mgmt=WPA-PSK
+#wpa_passphrase=123456789
+#wpa=2
+# set ciphers
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+
+4.vi /etc/network/interfaces
+iface wlan0 inet static
+address 192.168.0.1
+netmask 255.255.255.0
+
+5.vi /etc/dhcp/dhcpd.conf
+
 
 How to build OpenCV:
 ====================
