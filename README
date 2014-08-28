@@ -139,6 +139,39 @@ destination:tplink  wn823n(RTL8192CU) wifi support
 				GSPCA based webcams
 destination:configure web cam support
 
+How to build second sector Ubuntu:
+==================================
+1.In your host, run apt-get and install qemu environment.
+apt-get install qemu-user-static qemu-system
+
+2.create a new folder
+mkdir qemu-ubuntu
+
+3.qemu-debootstrap --arch=armhf trusty qemu-ubuntu
+
+4.cp `which qemu-arm-static` qemu-ubuntu/usr/bin/
+
+5.chroot qemu-ubuntu/
+
+6.vi /etc/init/ttyPS0.conf
+start on stopped rc RUNLEVEL=[2345] and (
+not-container or
+container CONTAINER=lxc or
+container CONTAINER=lxc-libvirt)
+stop on runlevel [!2345]
+respawn
+exec /bin/login -f root < /dev/ttyPS0 > /dev/ttyPS0 2>&1
+
+7.add apt-get source.
+echo "deb http://ports.ubuntu.com trusty main restricted multiverse universe" > /etc/apt/sources.list
+apt-get update
+
+8.set up root password.
+passwd
+
+9.copy ubuntu to sd card.
+sudo rsync –a qemu-ubuntu/ /media/ext4
+
 How to build OpenCV:
 ====================
 
