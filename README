@@ -10,20 +10,17 @@ http://zrobot.org/
 Where to get source code:
 =========================
 
-1.You can download openloop FAT partition binary from:
+1.You can download FAT partition binary from:
+http://pan.baidu.com/s/1i3j5q8t
 
-2.You can download openloop EXT partition binary from:
+2.You can download EXT partition binary from:
 http://pan.baidu.com/s/1i300mLR
 
-3.You can download closeloop FAT partition binary from:
-
-4.You can download closeloop EXT partition binary from:
-
-5.You can download openloop Vivado project from:
+3.You can download openloop Vivado project from:
 http://pan.baidu.com/s/1eQ4Adk2
 Please open with Vivado 2013.4
 
-6.You can download closeloop Vivado project from:
+4.You can download closeloop Vivado project from:
 http://pan.baidu.com/s/1jGvE2ou
 Please open with Vivado 2014.2
 Register address allocation:

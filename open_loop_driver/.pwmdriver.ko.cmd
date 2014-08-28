@@ -1,0 +1,1 @@
+cmd_/root/build/zrobot_v1-master/sw/driver/motor/pwmdriver.ko := arm-xilinx-linux-gnueabi-ld -EL -r  -T /root/zybo_gpio/linux-digilent/scripts/module-common.lds --build-id  -o /root/build/zrobot_v1-master/sw/driver/motor/pwmdriver.ko /root/build/zrobot_v1-master/sw/driver/motor/pwmdriver.o /root/build/zrobot_v1-master/sw/driver/motor/pwmdriver.mod.o

@@ -1,0 +1,1 @@
+cmd_/root/zybo_gpio/motor/pwmdriver.ko := arm-xilinx-linux-gnueabi-ld -EL -r  -T /root/zybo_gpio/linux-digilent/scripts/module-common.lds --build-id  -o /root/zybo_gpio/motor/pwmdriver.ko /root/zybo_gpio/motor/pwmdriver.o /root/zybo_gpio/motor/pwmdriver.mod.o
