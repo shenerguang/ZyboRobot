@@ -171,7 +171,7 @@ sudo rsync –a qemu-ubuntu/ /media/ext4
 
 How to config Wifi AP:
 ======================
-1. apt-get install linux-firmware hostapd isc-dhcp-server wireless-tools 
+1. apt-get install linux-firmware hostapd udhcpd wireless-tools 
 
 2.vi /etc/default/hostapd
 Add one line to the bottom:
@@ -204,8 +204,22 @@ iface wlan0 inet static
 address 192.168.0.1
 netmask 255.255.255.0
 
-5.vi /etc/dhcp/dhcpd.conf
+5.vi /etc/udhcpd.conf
+start           192.168.0.20    #default: 192.168.0.20
+end             192.168.0.254   #default: 192.168.0.254
+interface       wlan0           #default: eth0
+remaining       yes             #default: yes
+lease_file      /var/lib/misc/udhcpd.leases
+pidfile /var/run/udhcpd.pid
+option  subnet  255.255.255.0
+opt     router  192.168.0.1
+option  domain  local
+option  lease   864000          # 10 days of seconds
 
+6.Run
+ifconfig wlan0 192.168.0.1
+/etc/init.d/udhcpd restart
+/etc/init.d/hostapd restart
 
 How to build OpenCV:
 ====================
