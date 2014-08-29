@@ -28,19 +28,16 @@
 #include <asm/signal.h>
 #include <linux/gpio.h>
 #include <linux/irq.h>
-#include <linux/semaphore.h>
 
 
 MODULE_AUTHOR("seg");
 MODULE_DESCRIPTION("Ultrasonic driver of Smart car");
-MODULE_VERSION("V2.1");
+MODULE_VERSION("V2.0");
 MODULE_LICENSE("GPL");
 
 #define DEVICE_NAME "ultrasonic"
 #define ULTRASONIC_PHY_ADDR 0x43C10000
 #define INTERRUPT_ID 91
-#define IRQ_MASK 0x1
-#define IRQ_DEVICE_ID 0
 
 #define ULTRASONIC_STATUS_OFFSET 0
 #define ULTRASONIC_ECHO1_OFFSET  0x04
@@ -57,32 +54,8 @@ static unsigned long base_addr = 0;
 static struct class* ultrasonic_class = NULL;
 static struct device* ultrasonic_device = NULL;
 
-typedef struct {
-    dev_t dev_no;
-    u32 IsReady;
-    int InterruptPresent;
-}ULT_DEV;
-
-static ULT_DEV ultdev;
-static struct semaphore sem;
-
-static irqreturn_t ult_interrupt(int irq, void *dev_id, struct pt_regs *regs)
-{
-	up(&sem);	
-	printk("V\n");
-}
-
 static ssize_t ultrasonic_open(struct inode *inode, struct file *file)
 {
-	int ret = 0;
-
-	sema_init(&sem,0);
-	ret = request_irq(INTERRUPT_ID, ult_interrupt,IRQF_TRIGGER_RISING, DEVICE_NAME, &ultdev);
-	if(ret)
-    {
-        printk("could not register interrupt!");
-        return ret;
-    }
 	printk("open success\n");
 	return 0;
 }
@@ -91,7 +64,6 @@ static ssize_t ultrasonic_release(struct inode *inode, struct file *file)
 {
 	return 0;
 }
-
 
 //static ssize_t ultrasonic_ioctl(struct inode *inode, struct file *file, 
 //arg is a baseaddress of a long array which contains three elements.
@@ -108,9 +80,9 @@ static ssize_t ultrasonic_ioctl(struct file *file,
 	case ULTRASONIC_ECHO_READ:
 		printk("aaa");
 		iowrite32(0x1,base_addr + ULTRASONIC_STATUS_OFFSET);
-		printk("P\n");
-		down(&sem);
-		printk("P done\n");
+		data = ioread32(base_addr + ULTRASONIC_STATUS_OFFSET);
+		while(!(data & (1 << 1)) || !(data & (1 << 2)) || !(data & (1 << 3)))
+			data = ioread32(base_addr + ULTRASONIC_STATUS_OFFSET);
 		status[0] = ioread32(base_addr + ULTRASONIC_ECHO1_OFFSET);
 		status[1] = ioread32(base_addr + ULTRASONIC_ECHO2_OFFSET);
 		status[2] = ioread32(base_addr + ULTRASONIC_ECHO3_OFFSET);
@@ -127,7 +99,6 @@ static ssize_t ultrasonic_ioctl(struct file *file,
 	}
 	return 0;
 }
-
 static struct file_operations ultrasonic_fops = {
 	.owner = THIS_MODULE,
 	.unlocked_ioctl = ultrasonic_ioctl,
