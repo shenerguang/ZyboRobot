@@ -1,11 +1,11 @@
-/**********************************************************************
+/*****************************************************************************************
 *@Filename          ultrasonic.c
-*@Author            erguangs
+*@Author            zulongp
 *@Des
 *@History
-*                Original version, 16-Jul, 2013 zulongp
-*                modify for zrobot IV,  29-Aug, 2014 
-**********************************************************************/
+*                Original vrsion, 16-Jul, 2013
+*                program modify,  16-Jul, 2013
+****************************************************************************************/
 #include <linux/module.h>
 #include <linux/version.h>
 #include <linux/kernel.h>
@@ -21,7 +21,7 @@
 #include <asm/io.h>
 #include <asm/uaccess.h>
 
-MODULE_AUTHOR("seg");
+MODULE_AUTHOR("zlpan");
 MODULE_DESCRIPTION("Ultrasonic driver of Smart car");
 MODULE_VERSION("V1.0");
 MODULE_LICENSE("GPL");

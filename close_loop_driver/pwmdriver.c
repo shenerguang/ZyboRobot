@@ -6,19 +6,19 @@
 #include <asm/uaccess.h>
 
 #define DEVICE_NAME "pwm_new"
-#define MYPWML_PHY_ADDR 0x43c01000
-#define MYPWMR_PHY_ADDR 0x43c02000
+#define MYPWML_PHY_ADDR 0x43C01000
+#define MYPWMR_PHY_ADDR 0x43C02000
 
-#define CTRL_OFFSET 0x0
-#define IN_SPEED_SET_OFFSET 0x4
-#define IN_KP_PARAM_OFFSET 0x8
-#define IN_KI_PARAM_OFFSET 0x12
-#define IN_PID_OUT_MAX_OFFSET 0x16
-#define IN_PID_OUT_MIN_OFFSET 0x20
-#define IN_PID_UI_LIMIT_OFFSET 0x24
+#define CTRL_OFFSET 0 
+#define IN_SPEED_SET_OFFSET 1 * 4
+#define IN_KP_PARAM_OFFSET 2 * 4
+#define IN_KI_PARAM_OFFSET 3 * 4
+#define IN_PID_OUT_MAX_OFFSET 4 * 4
+#define IN_PID_OUT_MIN_OFFSET 5 * 4
+#define IN_PID_UI_LIMIT_OFFSET 6 * 4
 
-#define RESET_OFFSET 0x56
-#define OUT_CUR_SPEED_OFFSET 0x60
+#define RESET_OFFSET 14 * 4
+#define OUT_CUR_SPEED_OFFSET 15 * 4
 
 
 MODULE_AUTHOR("erguangs");
@@ -194,6 +194,7 @@ int pwm_open(struct inode *inode, struct file *filp)
 
 		iowrite32(1 ,mypwmr_addr + CTRL_OFFSET);
 		printk("init finished!\n");
+		printk("you can now control weels!\n");
 	
     return 0;
 }
@@ -251,8 +252,8 @@ static int __init mydriver_module_init(void)
     if (ret < 0)
         printk("failed to create /sys endpoint");
 
-    mypwml_addr = (unsigned long)ioremap(MYPWML_PHY_ADDR, 100);
-    mypwmr_addr = (unsigned long)ioremap(MYPWMR_PHY_ADDR, 100);
+    mypwml_addr = (unsigned long)ioremap(MYPWML_PHY_ADDR, 16);
+    mypwmr_addr = (unsigned long)ioremap(MYPWMR_PHY_ADDR, 16);
 
     printk("my pwm driver initial successfully!\n");
     return 0;
