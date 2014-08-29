@@ -20,6 +20,15 @@
 
 #include <asm/io.h>
 #include <asm/uaccess.h>
+#include <asm/atomic.h>
+#include <linux/wait.h>
+#include <linux/cdev.h>
+
+#include <linux/interrupt.h>
+#include <asm/signal.h>
+#include <linux/gpio.h>
+#include <linux/irq.h>
+
 
 MODULE_AUTHOR("seg");
 MODULE_DESCRIPTION("Ultrasonic driver of Smart car");
@@ -27,24 +36,17 @@ MODULE_VERSION("V1.0");
 MODULE_LICENSE("GPL");
 
 #define DEVICE_NAME "ultrasonic"
-#define ULTRASONIC_PHY_ADDR 0x6E000000
+#define ULTRASONIC_PHY_ADDR 0x43C10000
+#define INTERRUPT_ID 91
 
 #define ULTRASONIC_STATUS_OFFSET 0
 #define ULTRASONIC_ECHO1_OFFSET  0x04
 #define ULTRASONIC_ECHO2_OFFSET  0x08
 #define ULTRASONIC_ECHO3_OFFSET  0x0C
-#define ULTRASONIC_MOSI_OFFSET   0x10
-#define ULTRASONIC_MISO_OFFSET   0x14
 
 #define ULTRASONIC_IOC_MAGIC    'Z' 
 
-#define ULTRASONIC_STATUS_WRITE _IOW(ULTRASONIC_IOC_MAGIC, 1, int)
-#define ULTRASONIC_STATUS_READ  _IOR(ULTRASONIC_IOC_MAGIC, 2, int)
-#define ULTRASONIC_ECHO1_READ   _IOR(ULTRASONIC_IOC_MAGIC, 3, int)
-#define ULTRASONIC_ECHO2_READ   _IOR(ULTRASONIC_IOC_MAGIC, 4, int)
-#define ULTRASONIC_ECHO3_READ   _IOR(ULTRASONIC_IOC_MAGIC, 5, int)
-#define ULTRASONIC_MOSI_READ    _IOR(ULTRASONIC_IOC_MAGIC, 6, int)
-#define ULTRASONIC_MOSI_WRITE   _IOW(ULTRASONIC_IOC_MAGIC, 7, int)
+#define ULTRASONIC_ECHO_READ   _IOR(ULTRASONIC_IOC_MAGIC, 1, int)
 
 #define ULTRASONIC_IOC_MAXNR     10
 
@@ -58,15 +60,19 @@ static ssize_t ultrasonic_open(struct inode *inode, struct file *file)
 	printk("open success\n");
 	return 0;
 }
+
 static ssize_t ultrasonic_release(struct inode *inode, struct file *file)
 {
 	return 0;
 }
+
 //static ssize_t ultrasonic_ioctl(struct inode *inode, struct file *file, 
+//arg is a baseaddress of a long array which contains three elements.
 static ssize_t ultrasonic_ioctl(struct file *file, 
 								unsigned int cmd,
 								unsigned long arg)
 {
+	u32 status[3] = {0};
 	u32 data = 0;
 	int err = 0,ret = 0;
 	if(_IOC_TYPE(cmd) != ULTRASONIC_IOC_MAGIC)return -ENOTTY;
@@ -79,42 +85,20 @@ static ssize_t ultrasonic_ioctl(struct file *file,
 	if(err) return -EFAULT;
 	switch(cmd)
 	{
-	case ULTRASONIC_STATUS_WRITE:
-		ret = __get_user(data, (u32 *)arg);
-		iowrite32(data, base_addr + ULTRASONIC_STATUS_OFFSET);
-		break;
-	case ULTRASONIC_STATUS_READ:
-		//printk("data = %d\n",data);
+	case ULTRASONIC_ECHO_READ:
+		iowrite32(0x1,base_addr + ULTRASONIC_STATUS_OFFSET);
 		data = ioread32(base_addr + ULTRASONIC_STATUS_OFFSET);
-		ret = __put_user(data, (u32 *)arg);
-		printk("statuse = 0x%x\n",data);
-		break;
-	case ULTRASONIC_ECHO1_READ:
-		data = ioread32(base_addr + ULTRASONIC_ECHO1_OFFSET);
-		ret = __put_user(data, (u32 *)arg);
-		iowrite32(0, base_addr + ULTRASONIC_ECHO1_OFFSET);
-		printk("echo1 data = 0x%x\n",data);
-		break;
-	case ULTRASONIC_ECHO2_READ:
-		data = ioread32(base_addr + ULTRASONIC_ECHO2_OFFSET);
-		ret = __put_user(data, (u32 *)arg);
-		iowrite32(0, base_addr + ULTRASONIC_ECHO2_OFFSET);
-		printk("echo2 data = %d\n",data);
-		break;
-	case ULTRASONIC_ECHO3_READ:
-		data = ioread32(base_addr + ULTRASONIC_ECHO3_OFFSET);
-		ret = __put_user(data, (u32 *)arg);
-		iowrite32(0, base_addr + ULTRASONIC_ECHO3_OFFSET);
-		printk("echo3 data = %d\n",data);
-		break;
-	case ULTRASONIC_MOSI_WRITE:
-		ret = __get_user(data, (u32 *)arg);
-		//printk("ret = %d data = %d\n",ret,data);
-		iowrite32(data, base_addr + ULTRASONIC_MOSI_OFFSET);
-		break;
-	case ULTRASONIC_MOSI_READ:
-		data = ioread32(base_addr +  ULTRASONIC_MOSI_OFFSET);
-		ret = __put_user(data, (u32 *)arg);
+		while(!(data & (1 << 1)) || !(data & (1 << 2)) || !(data & (1 << 3)))
+			data = ioread32(base_addr + ULTRASONIC_STATUS_OFFSET);
+		status[0] = ioread32(base_addr + ULTRASONIC_ECHO1_OFFSET);
+		status[1] = ioread32(base_addr + ULTRASONIC_ECHO2_OFFSET);
+		status[2] = ioread32(base_addr + ULTRASONIC_ECHO3_OFFSET);
+		ret = __put_user(status[0], (u32 *)arg);
+		ret = __put_user(status[1], (u32 *)arg+1);
+		ret = __put_user(status[2], (u32 *)arg+2);
+		printk("echo1 data = 0x%x\n",status[0]);
+		printk("echo2 data = 0x%x\n",status[1]);
+		printk("echo3 data = 0x%x\n",status[2]);
 		break;
 	default:
 		break;

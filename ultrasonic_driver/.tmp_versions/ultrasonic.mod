@@ -1,2 +1,2 @@
-/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.ko
-/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o
+/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.ko
+/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o

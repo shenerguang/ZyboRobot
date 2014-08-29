@@ -1,8 +1,8 @@
-cmd_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/build/zrobot_v1-master/sw/driver/ultrasonic/.ultrasonic.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(ultrasonic)"  -D"KBUILD_MODNAME=KBUILD_STR(ultrasonic)" -c -o /root/build/zrobot_v1-master/sw/driver/ultrasonic/.tmp_ultrasonic.o /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.c
+cmd_/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o := arm-xilinx-linux-gnueabi-gcc -Wp,-MD,/root/github/ZyboRobot/ultrasonic_driver/.ultrasonic.o.d  -nostdinc -isystem /root/CodeSourcery/bin/../lib/gcc/arm-xilinx-linux-gnueabi/4.7.2/include -I/root/zybo_gpio/linux-digilent/arch/arm/include -Iarch/arm/include/generated -Iinclude  -include /root/zybo_gpio/linux-digilent/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-zynq/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -marm -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(ultrasonic)"  -D"KBUILD_MODNAME=KBUILD_STR(ultrasonic)" -c -o /root/github/ZyboRobot/ultrasonic_driver/.tmp_ultrasonic.o /root/github/ZyboRobot/ultrasonic_driver/ultrasonic.c
 
-source_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := /root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.c
+source_/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o := /root/github/ZyboRobot/ultrasonic_driver/ultrasonic.c
 
-deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := \
+deps_/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o := \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
     $(wildcard include/config/modules.h) \
@@ -451,7 +451,55 @@ deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o := \
   /root/zybo_gpio/linux-digilent/arch/arm/include/asm/uaccess.h \
   /root/zybo_gpio/linux-digilent/arch/arm/include/asm/unified.h \
     $(wildcard include/config/arm/asm/unified.h) \
+  include/linux/interrupt.h \
+    $(wildcard include/config/generic/hardirqs.h) \
+    $(wildcard include/config/irq/forced/threading.h) \
+    $(wildcard include/config/generic/irq/probe.h) \
+    $(wildcard include/config/proc/fs.h) \
+  include/linux/irqreturn.h \
+  include/linux/irqnr.h \
+  include/linux/hardirq.h \
+    $(wildcard include/config/virt/cpu/accounting.h) \
+    $(wildcard include/config/irq/time/accounting.h) \
+  include/linux/ftrace_irq.h \
+    $(wildcard include/config/ftrace/nmi/enter.h) \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/hardirq.h \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/irq.h \
+    $(wildcard include/config/sparse/irq.h) \
+  arch/arm/mach-zynq/include/mach/irqs.h \
+  include/linux/irq_cpustat.h \
+  include/linux/hrtimer.h \
+    $(wildcard include/config/high/res/timers.h) \
+    $(wildcard include/config/timerfd.h) \
+  include/linux/timerqueue.h \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/signal.h \
+  include/asm-generic/signal-defs.h \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/sigcontext.h \
+  include/linux/gpio.h \
+    $(wildcard include/config/generic/gpio.h) \
+    $(wildcard include/config/arch/have/custom/gpio/h.h) \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/gpio.h \
+    $(wildcard include/config/arch/nr/gpio.h) \
+  arch/arm/mach-zynq/include/mach/gpio.h \
+  include/asm-generic/gpio.h \
+    $(wildcard include/config/gpiolib.h) \
+    $(wildcard include/config/of/gpio.h) \
+    $(wildcard include/config/of.h) \
+    $(wildcard include/config/gpio/sysfs.h) \
+  include/linux/of.h \
+    $(wildcard include/config/sparc.h) \
+    $(wildcard include/config/of/dynamic.h) \
+  include/linux/mod_devicetable.h \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/prom.h \
+  include/linux/irq.h \
+    $(wildcard include/config/s390.h) \
+    $(wildcard include/config/generic/pending/irq.h) \
+  arch/arm/include/generated/asm/irq_regs.h \
+  include/asm-generic/irq_regs.h \
+  include/linux/irqdesc.h \
+    $(wildcard include/config/irq/preflow/fasteoi.h) \
+  /root/zybo_gpio/linux-digilent/arch/arm/include/asm/hw_irq.h \
 
-/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o: $(deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o)
+/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o: $(deps_/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o)
 
-$(deps_/root/build/zrobot_v1-master/sw/driver/ultrasonic/ultrasonic.o):
+$(deps_/root/github/ZyboRobot/ultrasonic_driver/ultrasonic.o):

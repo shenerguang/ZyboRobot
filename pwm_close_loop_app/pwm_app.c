@@ -25,18 +25,34 @@ int main(void)
         exit(1);
     }
     printf("open and init successful!");
+/*
     while(1)
     {
 	ioctl(pwm_fd,LEFT_SPEED_SET,20);
+	ioctl(pwm_fd,RIGHT_SPEED_SET,20);
 	sleep(10);
 	ioctl(pwm_fd,LEFT_SPEED_SET,0);
+	ioctl(pwm_fd,RIGHT_SPEED_SET,0);
 	sleep(1);
 	ioctl(pwm_fd,LEFT_SPEED_SET,-20);
+	ioctl(pwm_fd,RIGHT_SPEED_SET,-20);
 	sleep(10);
 	ioctl(pwm_fd,LEFT_SPEED_SET,0);
+	ioctl(pwm_fd,RIGHT_SPEED_SET,0);
 	sleep(1);
 	
-    }	
+    }
+*/	
+	ioctl(pwm_fd,LEFT_SPEED_SET,20);
+	ioctl(pwm_fd,RIGHT_SPEED_SET,20);
+	while(1)
+	{
+		int left_val,right_val;
+		ioctl(pwm_fd,LEFT_SPEED_GET,&left_val); 
+		ioctl(pwm_fd,RIGHT_SPEED_GET,&right_val); 
+		printf("left=%d;right=%d\n",left_val,right_val);
+		sleep(1);
+	}
     	
 }
 
