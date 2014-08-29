@@ -133,6 +133,15 @@ destination:tplink  wn823n(RTL8192CU) wifi support
 				GSPCA based webcams
 destination:configure web cam support
 
+How to auto build devicetree:
+=============================
+1.git clone https://github.com/Xilinx/device-tree-xlnx/tree/xilinx-v2014.2
+
+2.copy "device-tree-xlnx-v2014.2" folder to
+C:\Xilinx\SDK\2014.2\data\embeddedsw\lib\bsp
+
+3.create bsp choose devicetree In Vivado2014.2 SDK
+
 How to build second sector Ubuntu:
 ==================================
 1.In your host, run apt-get and install qemu environment.
