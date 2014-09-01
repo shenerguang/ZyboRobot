@@ -89,6 +89,7 @@ static ssize_t ultrasonic_open(struct inode *inode, struct file *file)
 
 static ssize_t ultrasonic_release(struct inode *inode, struct file *file)
 {
+	free_irq(INTERRUPT_ID,&ultdev);
 	return 0;
 }
 

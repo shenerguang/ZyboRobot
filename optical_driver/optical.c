@@ -125,6 +125,7 @@ static ssize_t optical_open(struct inode *inode, struct file *file)
 
 static ssize_t optical_release(struct inode *inode, struct file *file)
 {
+	free_irq(INTERRUPT_ID,&optdev);
 	return 0;
 }
 
