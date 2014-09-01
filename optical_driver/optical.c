@@ -40,6 +40,11 @@ MODULE_LICENSE("GPL");
 #define INTERRUPT_ID 90
 #define IRQ_MASK 0x1
 #define IRQ_DEVICE_ID 0
+#define XGPIO_GIE_OFFSET    0x11C /**< Glogal interrupt enable register */
+#define XGPIO_ISR_OFFSET    0x120 /**< Interrupt status register */
+#define XGPIO_IER_OFFSET    0x128 /**< Interrupt enable register */
+#define XGPIO_GIE_GINTR_ENABLE_MASK 0x80000000
+
 
 #define NO1_MASK 1 << 0
 #define NO2_MASK 1 << 1
@@ -54,6 +59,7 @@ MODULE_LICENSE("GPL");
 #define OPTICAL_3_READ	5
 #define OPTICAL_4_READ	6
 #define OPTICAL_5_READ	7
+#define OPTICAL_WAIT_READ	9
 
 
 static int optical_major = 0;
@@ -61,8 +67,58 @@ static unsigned long base_addr = 0;
 static struct class* optical_class = NULL;
 static struct device* optical_device = NULL;
 
+typedef struct {
+    dev_t dev_no;
+    u32 IsReady;
+    int InterruptPresent;
+}OPT_DEV;
+
+static OPT_DEV optdev;
+static struct semaphore sem;
+static int flag;
+
+static void InterruptClear()
+{
+        u32 val;
+        val = ioread32(base_addr + XGPIO_ISR_OFFSET);
+        iowrite32(val & IRQ_MASK,base_addr + XGPIO_ISR_OFFSET);
+        printk("int cleared");
+}
+static irqreturn_t opt_interrupt(int irq, void *dev_id, struct pt_regs *regs)
+{
+	printk("in interrupt\n");
+   	up(&sem);
+    printk("V\n");
+	InterruptClear();
+    return 0;
+
+}
+static void InterruptEnable()
+{
+    u32 val;
+    //printk("debug1 read addr = %lx\n",key_addr+XGPIO_IER_OFFSET);
+    //            0x128
+    //val = ioread32(key_addr + XGPIO_IER_OFFSET);
+    //printk("debug2 val=%lx\n",val);
+    //                   0x128                  0x1
+    iowrite32(val | IRQ_MASK,base_addr + XGPIO_IER_OFFSET);
+    //printk("debug3 ");
+    //           0x11c            0x80000000
+    iowrite32(XGPIO_GIE_GINTR_ENABLE_MASK,base_addr + XGPIO_GIE_OFFSET);
+}
+
 static ssize_t optical_open(struct inode *inode, struct file *file)
 {
+	int ret;
+	flag = 0;
+	sema_init(&sem,0);
+    ret = request_irq(INTERRUPT_ID, opt_interrupt,IRQF_TRIGGER_RISING, DEVICE_NAME, &optdev);
+    if(ret)
+    {
+        printk("could not register interrupt!");
+        return ret;
+    }
+
 	printk("open success\n");
 	return 0;
 }
@@ -88,6 +144,7 @@ static ssize_t optical_ioctl(struct file *file,
 {
 	u32 status = 0;
 	int ret = 0;
+	int *val = 0;
 	printk("debug:in ioctl!\n");
 	switch(cmd)
 	{
@@ -130,6 +187,21 @@ static ssize_t optical_ioctl(struct file *file,
 			ret = __put_user(1, (u32 *)arg);
 		else
 			ret = __put_user(0, (u32 *)arg);
+		break;
+	case OPTICAL_WAIT_READ:
+		status = ioread32(base_addr);
+		val = (u32 *)arg;
+		printk("val:%x,status:%x;eq:%d",*val,status,*val==status);
+		if(*val==status) 
+		{
+			//enter wait status
+			InterruptEnable();
+			printk("P\n");
+			down(&sem);
+			status = ioread32(base_addr);
+		}
+		ret = __put_user(status, (u32 *)arg);
+		printk("different optical data = 0x%x\n",status);
 		break;
 	default:
 		printk("cmd=%d\n",cmd);

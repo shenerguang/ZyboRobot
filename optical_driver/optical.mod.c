@@ -26,8 +26,11 @@ __attribute__((section("__versions"))) = {
 	{ 0x6bc3fbc0, "__unregister_chrdev" },
 	{ 0x3949871f, "__class_create" },
 	{ 0x1f87bfc, "__register_chrdev" },
-	{ 0x2e5810c6, "__aeabi_unwind_cpp_pr1" },
+	{ 0xf473ffaf, "down" },
+	{ 0xac8f37b2, "outer_cache" },
+	{ 0x4be7fb63, "up" },
 	{ 0x27e1a049, "printk" },
+	{ 0x2072ee9b, "request_threaded_irq" },
 	{ 0xefd6cf06, "__aeabi_unwind_cpp_pr0" },
 };
 
@@ -37,4 +40,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "ECD6833468ED913F7ED4D95");
+MODULE_INFO(srcversion, "BDDFB82AEC4F8ED9DB7BA91");
