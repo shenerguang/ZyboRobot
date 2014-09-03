@@ -15,11 +15,11 @@ fi
 
 #modify wlan config files
 wlan1=`cat /etc/hostapd/hostapd.conf | grep wlan | awk -F '=' '{print $2}'`
-sed -i 's/$wlan1/$wlan_no/g' /etc/hostapd/hostapd.conf
+sed -i "s/$wlan1/$wlan_no/g" /etc/hostapd/hostapd.conf
 wlan2=`cat /etc/network/interfaces | grep wlan | awk '{print $2}'`
-sed -i 's/$wlan2/$wlan_no/g' /etc/network/interfaces
+sed -i "s/$wlan2/$wlan_no/g" /etc/network/interfaces
 wlan3=`cat /etc/udhcpd.conf | grep wlan | awk '{print $2}'`
-sed -i 's/$wlan3/$wlan_no/g' /etc/udhcpd.conf
+sed -i "s/$wlan3/$wlan_no/g" /etc/udhcpd.conf
 
 #run wlan ap and dhcp
 ifconfig $wlan_no 192.168.0.1
