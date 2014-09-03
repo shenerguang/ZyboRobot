@@ -46,11 +46,11 @@ MODULE_LICENSE("GPL");
 #define XGPIO_GIE_GINTR_ENABLE_MASK 0x80000000
 
 
-#define NO1_MASK 1 << 0
-#define NO2_MASK 1 << 1
-#define NO3_MASK 1 << 2
-#define NO4_MASK 1 << 3
-#define NO5_MASK 1 << 4
+#define NO1_MASK (1 << 0)
+#define NO2_MASK (1 << 1)
+#define NO3_MASK (1 << 2)
+#define NO4_MASK (1 << 3)
+#define NO5_MASK (1 << 4)
 
 
 #define OPTICAL_FULL_READ	1
