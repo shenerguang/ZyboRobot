@@ -22,3 +22,7 @@ fi
 
 iwconfig $wlan_no essid $inputssid
 dhclient $wlan_no
+
+ip=` ifconfig | grep -A 1 wlan | grep inet | awk -F ':' '{print $2}' | awk '
+{print $1}'`
+echo "And  visit $ip to control smarter car!"
