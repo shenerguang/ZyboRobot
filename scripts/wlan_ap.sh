@@ -12,6 +12,12 @@ then
 else
 	wlan_no=`ifconfig -a | grep wlan | awk '{print $1}'`
 fi
+if [ "`ifconfig -a | grep wlan`x" == "x" ]
+then
+        echo wlan not found!
+        exit 1
+fi
+
 
 #modify wlan config files
 wlan1=`cat /etc/hostapd/hostapd.conf | grep wlan | awk -F '=' '{print $2}'`
