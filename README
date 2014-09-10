@@ -66,6 +66,14 @@ Hot to use mjpeg and Java applet:
 Change Security Level to Medium.
 Reopen IE and click "allow" in the prompt window.
 
+Compile env:
+============
+#!/bin/bash 
+export CCOMPILER=arm-xilinx-linux-gnueabi-gcc
+export ARCH=arm
+export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
+export PATH=$PATH:/root/CodeSourcery/bin/
+
 Uboot configuration:
 ====================
 
