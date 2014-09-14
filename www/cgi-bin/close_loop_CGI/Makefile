@@ -1,3 +1,4 @@
+INSTALL_PATH=..
 #CROSS_COMPILE=arm-xilinx-linux-gnueabi-
 all:
 	$(CROSS_COMPILE)gcc -c error.c

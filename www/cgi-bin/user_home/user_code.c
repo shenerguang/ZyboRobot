@@ -7,7 +7,6 @@ int main()
 {
         printf("hello world\n");
         Xil_Out32(AXI_GPIO_BASEADDR+12, 0x0);
-    Xil_Out32(AXI_GPIO_BASEADDR+8, 0x1);
+    Xil_Out32(AXI_GPIO_BASEADDR+8, 0x3);
         return 0;
 }
-

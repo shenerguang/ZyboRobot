@@ -17,7 +17,7 @@ then
 	echo "$ip"x
 elif [ $choice == "eth" ]
 then
-	if [ "`ifconfig | grep eth`x" == "xx" ]
+	if [ "`ifconfig | grep eth`x" == "x" ]
 	then
 		echo "eth status off, please start ethnet port"
 		exit 1
