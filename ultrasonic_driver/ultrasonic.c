@@ -38,7 +38,7 @@ MODULE_LICENSE("GPL");
 
 #define DEVICE_NAME "ultrasonic"
 #define ULTRASONIC_PHY_ADDR 0x43C10000
-#define INTERRUPT_ID 91
+#define INTERRUPT_ID 62
 #define IRQ_MASK 0x1
 #define IRQ_DEVICE_ID 0
 

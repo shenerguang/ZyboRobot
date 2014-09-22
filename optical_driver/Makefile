@@ -1,7 +1,7 @@
 ifneq ($(KERNELRELEASE),)
 obj-m := optical.o
 else
-KERNEL_DIR := /root/zybo_gpio/linux-digilent
+KERNEL_DIR := /root/zybo_gpio/linux-Digilent-Dev
 #KERNEL_DIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 all:

@@ -37,7 +37,7 @@ MODULE_LICENSE("GPL");
 
 #define DEVICE_NAME "optical"
 #define OPTICAL_PHY_ADDR 0x41210000
-#define INTERRUPT_ID 90
+#define INTERRUPT_ID 61
 #define IRQ_MASK 0x1
 #define IRQ_DEVICE_ID 0
 #define XGPIO_GIE_OFFSET    0x11C /**< Glogal interrupt enable register */
