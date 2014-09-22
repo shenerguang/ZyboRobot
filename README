@@ -1,4 +1,4 @@
-Zybo Robot Demo(Zrobot IV)
+Zybo Robot Demo(Zrobot IV zybo)
 
 Where to get help:
 ==================
@@ -11,20 +11,15 @@ Where to get source code:
 =========================
 
 1.You can download FAT partition binary from:
-http://pan.baidu.com/s/1i3j5q8t
+https://github.com/shenerguang/Zrobot_Boot/tree/zed_robot_boot/ready_to_download
 
 2.You can download EXT partition binary from:
-http://pan.baidu.com/s/1i300mLR
+https://github.com/shenerguang/Zrobot_Ubuntu
 
-3.You can download openloop Vivado project from:
-http://pan.baidu.com/s/1eQ4Adk2
-Please open with Vivado 2013.4
-
-4.You can download closeloop Vivado project from:
-http://pan.baidu.com/s/1jGvE2ou
+3.You can download Vivado project from:
+https://github.com/shenerguang/ZRobot_Hardware
 Please open with Vivado 2014.2
-Register address allocation:
-http://pan.baidu.com/s/1o6AzyQY
+
  
 How to use TP-LINK WN823N:
 ==========================
