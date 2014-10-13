@@ -55,10 +55,10 @@ int main()
 
 	/*ultrasonic test*/
 	Ultrasonic_Read_All(ult_val);
-	printf("ult 1=%.6f, ult 2=%.6f, ult 3=%.6f\n",ult_val[0],ult_val[1],ult_val[2]);
+	printf("ult 1=%f, ult 2=%f, ult 3=%f\n",ult_val[0],ult_val[1],ult_val[2]);
 	sleep(1);
 	Ultrasonic_Read_Single(1, &ult_single);
-	printf("ult 1=%.6f\n",ult_single);
+	printf("ult 1=%f\n",ult_single);
 	Devices_Close();
 
 	return 0;
