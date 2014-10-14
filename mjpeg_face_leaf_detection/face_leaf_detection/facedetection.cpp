@@ -66,7 +66,7 @@ int convert_yuv_to_rgb_buffer(unsigned char *yuv_buffer_pointer,unsigned char *r
 void facedetection(unsigned char *rgb_buffer);
 
 /**Global variables*/
-String face_cascade_name = "haarcascade_frontalface_alt2.xml";
+String face_cascade_name = "/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt2.xml";
 CascadeClassifier face_cascade;
 
 

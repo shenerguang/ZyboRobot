@@ -38,7 +38,7 @@ fi
 ip_home=`cat /var/www/home.html | grep 8080 | awk -F ':' '{print $2}' | grep -o '[^/]*'`
 sed -i "s/$ip_home/$ip/g" /var/www/home.html
 
-ip_index=`cat /var/www/index.html | grep 8080 | awk -F ':' '{print $2}' | awk '{$a=substr($0,3,16);print $a}'`
+ip_index=`cat /var/www/index.html | grep 8080 | awk -F ':' '{print $2}' | awk '{print substr($0,3,16)}'`
 sed -i "s/$ip_index/$ip/g" /var/www/index.html
 
 mjpg_streamer -i "input_uvc.so -y -f 5 -r 640*480 -q 60" "output_http.so -p 8080 -w /var/www"
